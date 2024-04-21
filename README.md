@@ -1,11 +1,10 @@
 # DeepSeMS
 DeepSeMS is a AI-based tool to characterize the chemical structures of natural molecules produced by microbes from biosynthetic gene clusters that encoding secondary metabolites. 
 
-
 ## Publication
-In submission.
+In progress.
 ## Requirements
-Annotated versions are tested, any later version should work
+Annotated versions are tested, any later version should work:
 - python (version 3.10)
 - pytorch (version 2.1.0)
 - torchtext (version 0.16.0)
