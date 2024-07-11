@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------
-# Large language model revealing hidden biosynthetic potential of the microbiomes
+# Large language model revealing hidden biosynthetic potential of the deep ocean microbiome
 # ----------------------------------------------------------------
 # References: 
 # https://github.com/huggingface/transformers; 
