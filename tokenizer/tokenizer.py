@@ -4,7 +4,6 @@
 import re
 from typing import Sequence, Dict, List, Tuple
 import numpy as np
-# from . import Constants
 
 """
 Define some constants
