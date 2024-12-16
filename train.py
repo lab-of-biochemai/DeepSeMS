@@ -394,8 +394,8 @@ if __name__ == '__main__':
         src_tokens=1020, trg_tokens=35, dim_model=512, num_heads=8, num_encoder_layers=6, num_decoder_layers=6, dropout_p=0.1
     ).to(device)
 
-    train_batch = generate_batch(data, 32, 1)
-    val_batch = generate_batch(val_data, 32, 1)
+    train_batch = generate_batch(data, 64, 1)
+    val_batch = generate_batch(val_data, 64, 1)
 
     opt = torch.optim.AdamW(model.parameters(), lr=0.0001)
     loss_fn = nn.CrossEntropyLoss()
