@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------
-# TJ Xu et al. Large language model revealing hidden biosynthetic potential of the global ocean microbiome.
+# TJ Xu et al. DeepSeMS: a large language model reveals hidden biosynthetic potential of the global ocean microbiome.
 # ----------------------------------------------------------------
 # References: 
 # https://github.com/huggingface/transformers; 
