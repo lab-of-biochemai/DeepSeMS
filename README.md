@@ -1,5 +1,5 @@
 # DeepSeMS
-DeepSeMS is a AI-based tool to characterize the chemical structures of natural molecules produced by microbes from biosynthetic gene clusters that encoding secondary metabolites. 
+DeepSeMS is a large language model (LLM) based on Transformer architecture to characterize the chemical structures of natural molecules produced by microbes from biosynthetic gene clusters that encoding secondary metabolites.
 ## Publication
 In submission.
 ## Requirements
@@ -13,5 +13,5 @@ Annotated versions are tested, any later version should work
 - rdkit (version 2023.3.3)
 - pandas (version 2.0.3)
 ## Preferred environment and GPU
-CUDA (version 12.0)
-NVIDIA GeForce RTX 4090 * 2
+- CUDA (version 12.0)
+- NVIDIA GeForce RTX 4090 * 2
