@@ -9,9 +9,9 @@ Annotated versions are tested, any later version should work
 - torchtext (version 0.16.0)
 - hmmer3 (version 3.3.2)
 - biopython (version 1.79)
-- Pfam (version 34.0)
-- rdkit (version 2023.3.3)
+- Pfam (version 36.0)
+- rdkit (version 2023.03.1)
 - pandas (version 2.0.3)
-## Preferred environment and GPU
-- CUDA (version 12.0)
-- NVIDIA GeForce RTX 4090 * 2
+## Preferred environment
+- CUDA (version 12.0 tested)
+- GPU VRAM 48 GB (NVIDIA GeForce RTX 4090 * 2 tested)
