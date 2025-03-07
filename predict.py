@@ -94,7 +94,7 @@ if __name__ == '__main__':
         exit()
     jobname = os.path.basename(args.input)
     jobname = jobname.replace(".gbk","")
-    output_path = args.output + "/" + jobname
+    output_path = args.output + jobname
     if not os.path.exists(output_path):
         os.makedirs(output_path)
     annotation_path = output_path + "/annotation"
@@ -166,7 +166,7 @@ if __name__ == '__main__':
     root = os.path.dirname(__file__)
     bgc_features = pd.read_csv('./vocabs/bgc_features_vacab.csv')['bgc_features'].tolist()
     bgc_features_voc = get_vocab_bgc(bgc_features)
-    smiles_vocab = torch.load('./vocabs/smiles-vocab_c.pt')
+    smiles_vocab = torch.load('./vocabs/smiles-vocab.pt')
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Device: {device}")
 
