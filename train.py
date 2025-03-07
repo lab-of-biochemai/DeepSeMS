@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import os
 import pandas as pd
 from torchtext.vocab import build_vocab_from_iterator
-from tokenizer import RegexTokenizer
+from tokenizer.tokenizer import RegexTokenizer
 from tqdm import tqdm
 import random
 from rdkit.Chem import MACCSkeys
@@ -333,7 +333,7 @@ def fit(model, opt, loss_fn, train_dataloader, val_dataloader, epochs, patience,
     return train_loss_list, validation_loss_list, train_acc_list, validation_acc_list
 
 # Load BGC features
-bgc_features = pd.read_csv(r'./vacabs/bgc_features_vacab.csv')['bgc_features'].tolist()
+bgc_features = pd.read_csv(r'./vocabs/bgc_features_vacab.csv')['bgc_features'].tolist()
 # Build vocabulary for BGC features
 bgc_features_voc = get_vocab_bgc(bgc_features)
 
