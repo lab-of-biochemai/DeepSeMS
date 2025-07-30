@@ -1,6 +1,7 @@
 # DeepSeMS
 DeepSeMS is a large language model (LLM) based on Transformer architecture to characterize the chemical structures of natural molecules produced by microbes from biosynthetic gene clusters that encoding secondary metabolites.
-Checkpoint files: http://doi.org/10.6084/m9.figshare.29680658
+- Checkpoint files: http://doi.org/10.6084/m9.figshare.29680658
+- DeepSeMS web server: https://biochemai.cstspace.cn/deepsems/
 ## Publication
 In submission.
 ## Requirements
