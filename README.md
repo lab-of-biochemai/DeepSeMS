@@ -28,9 +28,8 @@ DeepSeMS/
 ├── checkpoints/       # Place model weights here (.ckpt)
 ├── data/
 │   ├── pfam/          # Place Pfam files here
-│   ├── training_data.csv
 │   ├── tran_0.csv ... tran_9.csv (for 10-fold CV)
-│   └── val_0.csv ... val_9.csv
+│   └── val_0.csv  ... val_9.csv
 ├── vocabs/            # Vocabulary files
 ├── test/              # Input files for prediction
 │   ├── outputs/       # Annotation files
@@ -155,4 +154,4 @@ Annotated versions are tested, later versions should generally work.
 - Data Handling: `Pandas (v2.0.3)`
 ## Preferred Hardware
 - `CUDA 12.0` (tested)
-- `GPU VRAM: 24 GB` (Tested on NVIDIA GeForce RTX 4090)
+- `GPU VRAM: 24 GB` (NVIDIA GeForce RTX 4090 tested)
