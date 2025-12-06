@@ -53,14 +53,14 @@ Before running the container, you must download the necessary model weights and 
 Mount your current directory (containing code and data) to `/deepsems` inside the container.
 ```Bash
 # Assuming the DeepSeMS project directory is /home/user/deepsems.
-docker run -it -v /home/user/deepsems:/deepsems deepsems:v1 /bin/bash
+docker run -it -v /home/user/deepsems:/deepsems tingjunxu2022/deepsems:v1 /bin/bash
 # Inside the container:
 cd /deepsems
 ```
 Or run the container with GPUs. ([NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html))
 ```Bash
 # Assuming the DeepSeMS project directory is /home/user/deepsems.
-docker run --gpus all -it -v /home/user/deepsems:/deepsems deepsems:v1 /bin/bash
+docker run --gpus all -it -v /home/user/deepsems:/deepsems tingjunxu2022/deepsems:v1 /bin/bash
 # Inside the container:
 cd /deepsems
 ```
