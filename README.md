@@ -33,7 +33,7 @@ DeepSeMS/
 │   └── val_0.csv ... val_9.csv
 ├── vocabs/            # Vocabulary files
 ├── test/              # Input files for prediction
-│   ├── outputs/          # Outputs
+│   ├── outputs/       # Annotation files
 ├── tokenizer/
 │   ├── tokenizer.py   # Tokenizer 
 ├── models/            # Model architecture code
@@ -104,7 +104,7 @@ python predict.py --input ./test/deepsems_sample.gbk --type antismash
 Arguments:
 --input: Path to the input file.
 --type: Input format. Options: antismash (default) or deepbgc.
---output: Directory to save results (default: ./test/outputs/).
+--output: Directory to save annotation files (default: ./test/outputs/).
 ```
 ### 2. Predict from DeepBGC results (FASTA)
 If you have a `FASTA` file containing protein sequences (e.g., from DeepBGC).
@@ -115,7 +115,7 @@ python predict.py --input ./test/DeepBGC_sample.fa --type deepbgc
 Arguments:
 --input: Path to the input file.
 --type: Input format. Options: antismash (default) or deepbgc.
---output: Directory to save results (default: ./test/outputs/).
+--output: Directory to save annotation files (default: ./test/outputs/).
 ```
 ## Model Training
 ### 1. Retraining (Default)
