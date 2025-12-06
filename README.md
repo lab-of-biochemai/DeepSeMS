@@ -84,15 +84,15 @@ pip install biopython==1.79 pandas==2.0.3 rdkit==2023.03.1
 ### Data Preparation
 You must download the support files before running predictions or training.
 #### Model Checkpoints:
-Download from: http://doi.org/10.6084/m9.figshare.29680658
+Download from: http://doi.org/10.6084/m9.figshare.29680658.  
 Place `.ckpt` files into the `./checkpoints/` directory.
 #### Pfam Database:
-Download `Pfam.zip` from the link above.
-Place the Pfam files into the `./data/pfam/` directory.
+Download `Pfam.zip` from the link above.  
+Place the Pfam files into the `./data/pfam/` directory.  
 Note: You may need to run `hmmpress ./data/pfam/Pfam-A.hmm` if index files are missing.
 #### Training Data (Only for retraining):
-Download `training_data.zip` from the link above.
-Place CSV files (e.g., `tran_*.csv, val_*.csv`) into the `./data` directory.
+Download `training_data.zip` from the link above.  
+Place CSV files (e.g., `tran_*.csv, val_*.csv`) into the `./data` directory.  
 ## Usage (Prediction)
 Use `predict.py` to generate SMILES strings from gene clusters.
 ### 1. Predict from antiSMASH results (GenBank)
@@ -119,15 +119,15 @@ Arguments:
 ```
 ## Model Training
 ### 1. Retraining (Default)
-To retrain the model using the default hyperparameters (10-fold Cross-Validation), simply run the script without arguments.
-Ensure training data (`tran_0.csv` to `tran_9.csv` and `val_0.csv` to `val_9.csv`) is in `./data/`.
+To retrain the model using the default hyperparameters (10-fold Cross-Validation), simply run the script without arguments.  
+Ensure training data (`tran_0.csv` to `tran_9.csv` and `val_0.csv` to `val_9.csv`) is in `./data/`.  
 Run the training script:
 ```Bash
 python train.py
 ```
 This will train 10 separate models and save checkpoints (`checkpoint0.ckpt` ... `checkpoint9.ckpt`) to the `./checkpoints/` folder.
 ### 2. Customized Training
-You can customize the model architecture and training process.
+You can customize the model architecture and training process.  
 Below is the full list of arguments available you can pass to the `train.py` script for customization:
 
 | Argument | Type | Default | Description |
