@@ -116,6 +116,27 @@ Arguments:
 --type: Input format. Options: antismash (default) or deepbgc.
 --output: Directory to save annotation files (default: ./test/outputs/).
 ```
+#### Sample result:
+Results are ranked by consensus across the top-10 models and predicted scores, with the top-ranked structure being the one most consistently predicted.
+```Bash
+Top Predictions: 
+------------------------------
+Rank: 1 
+Predicted SMILES: CC(C)C1C=CC(=O)NCCC=CC(NC(=O)C(NC(=O)O)C(C)C)C(=O)N1
+Predicted score: 87.86
+Consensus count: 5
+------------------------------
+Rank: 2
+Predicted SMILES: CCCCCCC=CC=CC(=O)NC(C(=O)NC1CCCCNC(=O)C=CC(CC)NC1=O)C(C)O
+Predicted score: 85.68
+Consensus count: 3
+------------------------------
+Rank: 3
+Predicted SMILES: CCCCCCCCC=CCC(=O)NC(C(=O)NC1CC(=O)C=CC(C(C)C)NC1=O)C(C)C
+Predicted score: 83.41
+Consensus count: 2
+...
+```
 ## Model Training
 ### 1. Retraining (Default)
 To retrain the model using the default hyperparameters (10-fold Cross-Validation), simply run the script without arguments.  
@@ -155,3 +176,4 @@ Annotated versions are tested, later versions should generally work.
 ## Preferred Hardware
 - `CUDA 12.0` (tested)
 - `GPU VRAM: 24 GB` (NVIDIA GeForce RTX 4090 tested)
+
