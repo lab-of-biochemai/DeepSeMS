@@ -210,14 +210,11 @@ if __name__ == '__main__':
             
             if evalue > 0.01:
                 continue
-            
-            bgc_feature_idx = bgc_features_voc[pfam_id]
-            if bgc_feature_idx <= 0: 
-                continue
                 
             pfam_ids_bgc.append(pfam_id)
 
     print(f"Annotated BGC features count: {len(pfam_ids_bgc)}")
+    # print(pfam_ids_bgc)
     bgc_feature_str = str(pfam_ids_bgc)
 
     # ---------------- Model Prediction ----------------
