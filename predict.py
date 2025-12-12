@@ -214,7 +214,6 @@ if __name__ == '__main__':
             pfam_ids_bgc.append(pfam_id)
 
     print(f"Annotated BGC features count: {len(pfam_ids_bgc)}")
-    # print(pfam_ids_bgc)
     bgc_feature_str = str(pfam_ids_bgc)
 
     # ---------------- Model Prediction ----------------
