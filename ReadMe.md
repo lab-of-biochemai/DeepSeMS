@@ -71,6 +71,7 @@ DeepSeMS/
 ├── tokenizer/
 │   ├── tokenizer.py   # Tokenizer 
 ├── models/            # Model architecture code
+├── calculate_molecular_properties.py   # Result post-processing
 ├── predict.py         # Prediction script
 ├── train.py           # Training script
 ├── environment.yml    # Code environment file
@@ -112,12 +113,11 @@ python predict.py
   - `--output`: Directory to save annotation and output result files (default: ./test/outputs/).
   - `--pfam`: Directory to pfam database files (default: ./data/pfam/).
 ##### Example 1: Predict from antiSMASH results (GenBank)
-This is the default mode. It extracts biosynthetic genes from a `.gbk` file.
+This is the default mode.
 ```Bash
 python predict.py --input ./test/antiSMASH_example.gbk --type antismash
 ```
 ##### Example 2: Predict from DeepBGC results (FASTA)
-If you have a `FASTA` file containing protein sequences (e.g., from DeepBGC).
 ```Bash
 python predict.py --input ./test/DeepBGC_example.fa --type deepbgc
 ```
