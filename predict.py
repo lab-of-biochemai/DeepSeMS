@@ -1,14 +1,6 @@
 # ----------------------------------------------------------------
 # TJ Xu et al. DeepSeMS: a large language model reveals hidden biosynthetic potential of the global ocean microbiome.
 # ----------------------------------------------------------------
-# References: 
-# https://github.com/huggingface/transformers; 
-# https://github.com/DSPsleeporg/smiles-transformer; 
-# https://github.com/yydiao1025/Macformer
-# https://github.com/Merck/deepbgc
-# https://github.com/pschwllr/MolecularTransformer
-# https://github.com/gmattedi/SmilesTransformer
-
 import torch
 from Bio import SearchIO
 from Bio import SeqIO

@@ -32,6 +32,7 @@
   - [Training data](#1-training-data)
   - [Retraining](#2-retraining)
   - [Customized training](#3-customized-training)
+  - [Training from scratch](#4-training-from-scratch)
 - [Requirements](#requirements)
 - [Preferred Hardware](#preferred-hardware)
 
@@ -65,6 +66,7 @@ DeepSeMS/
 ├── checkpoints/       # Place model weights here (.ckpt)
 ├── data/
 │   ├── pfam/          # Place Pfam database files here
+│   ├── data_set.csv   # Data set for training from scratch
 ├── vocabs/            # Vocabulary files
 ├── test/              # Input files for prediction
 │   ├── outputs/       # Annotation and output result files
@@ -72,6 +74,7 @@ DeepSeMS/
 │   ├── tokenizer.py   # Tokenizer 
 ├── models/            # Model architecture code
 ├── calculate_molecular_properties.py   # Result post-processing
+├── data_processing.py # Data processing for training from scratch
 ├── predict.py         # Prediction script
 ├── train.py           # Training script
 ├── environment.yml    # Code environment file
@@ -237,6 +240,27 @@ Below is the full list of arguments available you can pass to the `train.py` scr
 | **Misc** | | | |
 | `--model_prefix` | `str` | `checkpoint` | Prefix for saved model files (e.g., `checkpoint0.ckpt`). |
 
+### 4. Training from scratch
+#### Step 1: Install additional dependency
+```Bash
+pip install scikit-learn==1.7.2
+```
+#### Step 2: Data processing
+Run `data_processing.py` with default arguments as the pretrained model to process the data set for training from scratch. It will perform data augmentation, SMILES canonicalization, and data partitioning.
+```Bash
+python data_processing.py
+```
+- Arguments:
+  - `--input`: Path to the data set file. (default: ./data/data_set.csv)
+  - `--output`: Directory to save the output file. (default: ./data/)
+  - `--type`: Data augmentation type. Options: 0 (structural features-aligned SMILES enumeration) or 1 (randomized SMILES enumeration). (default: 0)
+  - `--enum_factor`: Data amplification factor. (default: 100)
+  - `--max_tries`: Maximum trying number for SMILES enumeration. (default: 500)
+#### Step 3: Run training from scratch
+Run `train.py` script for training from scratch.
+```Bash
+python train.py
+```
 ## Requirements
 Annotated versions are tested, later versions should generally work.
 - Language: `Python 3.10`
