@@ -28,7 +28,7 @@
       - [Calculate molecular properties](#calculate-molecular-properties)
       - [Batch running](#batch-running)
   - [Local Installation (Conda)](#local-installation-conda)
-- [Model Training (Optional)](#model-training-optional)
+- [Model Construction (Optional)](#model-construction-optional)
 - [Requirements](#requirements)
 - [Preferred Hardware](#preferred-hardware)
 
@@ -205,16 +205,9 @@ conda install -c bioconda hmmer=3.3.2
 pip install torch==2.1.0 torchtext==0.16.0
 pip install biopython==1.79 pandas==2.0.3 rdkit==2023.03.1 numpy==1.26.0
 ```
-## Model Training (Optional)
-DeepSeMS provides pretrained model checkpoints for direct inference. Model training is optional and is only required if users wish to reproduce the published model or retrain DeepSeMS on custom datasets. 
+## Model Construction (Optional)
 
-DeepSeMS supports two distinct training workflows:
-- **Reproducing the published DeepSeMS model (recommended)**
-  - Uses the curated, fully processed training dataset released by the authors and reproduces the model reported in the manuscript and used by the web server.
-- **Training from raw data (advanced)**
-  - Intended for advanced users who wish to retrain DeepSeMS on new datasets or with customized data preprocessing and augmentation. 
-
-👉 Please refer to the detailed training documentation: [Model Training](Model_Training.md).
+👉 Please refer to the detailed model construction documentation: [Model Training](model_construction.md).
 
 ## Requirements
 Annotated versions are tested, later versions should generally work.
