@@ -207,7 +207,7 @@ pip install biopython==1.79 pandas==2.0.3 rdkit==2023.03.1 numpy==1.26.0
 ```
 ## Model Construction (Optional)
 
-👉 Please refer to the detailed model construction documentation: [Model Training](model_construction.md).
+👉 Please refer to the detailed model construction documentation: [Model Construction](model_construction.md).
 
 ## Requirements
 Annotated versions are tested, later versions should generally work.
