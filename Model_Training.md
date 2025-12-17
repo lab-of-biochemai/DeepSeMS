@@ -19,7 +19,10 @@ Intended for advanced users who wish to retrain DeepSeMS on new datasets or with
 pip install scikit-learn==1.7.2
 ```
 ##### Prepare raw data
-Prepare raw data with BGC-SMILES pairs as the same format as the example file provided in the repository: `./data/data_set.csv`.
+Prepare raw data with BGC-SMILES pairs as the same format as the example file provided in the repository: `./data/data_set.csv`.  
+- Each row corresponds to one BGC and its associated molecular structure, represented by:
+	-	`BGC_features`: An ordered Python list of Pfam identifiers.
+	-	`SMILES`: The corresponding molecular structure encoded as a SMILES string.
 ##### Data processing and augmentation
 Run `data_processing.py` to process the data set for training. It will perform data augmentation, SMILES canonicalization, and data partitioning.
 ```Bash
