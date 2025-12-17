@@ -29,10 +29,6 @@
       - [Batch running](#batch-running)
   - [Local Installation (Conda)](#local-installation-conda)
 - [Model Training (Optional)](#model-training-optional)
-  - [Training data](#1-training-data)
-  - [Retraining](#2-retraining)
-  - [Customized training](#3-customized-training)
-  - [Training from scratch](#4-training-from-scratch)
 - [Requirements](#requirements)
 - [Preferred Hardware](#preferred-hardware)
 
@@ -66,15 +62,15 @@ DeepSeMS/
 ├── checkpoints/       # Place model weights here (.ckpt)
 ├── data/
 │   ├── pfam/          # Place Pfam database files here
-│   ├── data_set.csv   # Data set for training from scratch
+│   ├── data_set.csv   # Data set for training
 ├── vocabs/            # Vocabulary files
 ├── test/              # Input files for prediction
 │   ├── outputs/       # Annotation and output result files
 ├── tokenizer/
-│   ├── tokenizer.py   # Tokenizer 
+│   ├── tokenizer.py   # Tokenizer
 ├── models/            # Model architecture code
 ├── calculate_molecular_properties.py   # Result post-processing
-├── data_processing.py # Data processing for training from scratch
+├── data_processing.py # Data processing for training
 ├── predict.py         # Prediction script
 ├── train.py           # Training script
 ├── environment.yml    # Code environment file
@@ -210,57 +206,16 @@ pip install torch==2.1.0 torchtext==0.16.0
 pip install biopython==1.79 pandas==2.0.3 rdkit==2023.03.1 numpy==1.26.0
 ```
 ## Model Training (Optional)
-### 1. Training data
-You must download the training data (https://figshare.com/ndownloader/files/60134648) before running model training.   
-Unzip and place the training data files (e.g., `tran_*.csv, val_*.csv`) into the `./data` directory.
-### 2. Retraining
-To retrain the model using the default hyperparameters (10-fold Cross-Validation), simply run the `train.py` script without arguments.   
-⚠️ It will take 5-6 days on one NVIDIA-GeForce-RTX-4090 GPU:
-```Bash
-python train.py
-```
-This will train 10 separate models and save checkpoints (`checkpoint0.ckpt` ... `checkpoint9.ckpt`) to the `./checkpoints/` folder.
-### 3. Customized training
-You can customize the model architecture and training process.   
-Below is the full list of arguments available you can pass to the `train.py` script for customization:
+DeepSeMS provides pretrained model checkpoints for direct inference. Model training is optional and is only required if users wish to reproduce the published model or retrain DeepSeMS on custom datasets. 
 
-| Argument | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| **Training Setup** | | | |
-| `--batch_size` | `int` | `64` | Number of samples per batch. |
-| `--epochs` | `int` | `500` | Total number of training epochs per fold. |
-| `--lr` | `float` | `0.0001` | Learning rate for the AdamW optimizer. |
-| `--patience` | `int` | `10` | Early stopping patience (epochs without improvement). |
-| **Model Architecture** | | | |
-| `--d_model` | `int` | `512` | Dimension of the embeddings and hidden layers. |
-| `--n_heads` | `int` | `8` | Number of attention heads. |
-| `--n_enc` | `int` | `6` | Number of encoder layers. |
-| `--n_dec` | `int` | `6` | Number of decoder layers. |
-| `--dropout` | `float` | `0.1` | Dropout probability. |
-| **Misc** | | | |
-| `--model_prefix` | `str` | `checkpoint` | Prefix for saved model files (e.g., `checkpoint0.ckpt`). |
+DeepSeMS supports two distinct training workflows:
+- **Reproducing the published DeepSeMS model (recommended)**
+  - Uses the curated, fully processed training dataset released by the authors and reproduces the model reported in the manuscript and used by the web server.
+- **Training from raw data (advanced)**
+  - Intended for advanced users who wish to retrain DeepSeMS on new datasets or with customized data preprocessing and augmentation. 
 
-### 4. Training from scratch
-#### Step 1: Install additional dependency
-```Bash
-pip install scikit-learn==1.7.2
-```
-#### Step 2: Data processing
-Run `data_processing.py` with default arguments as the pretrained model to process the data set for training from scratch. It will perform data augmentation, SMILES canonicalization, and data partitioning.
-```Bash
-python data_processing.py
-```
-- Arguments:
-  - `--input`: Path to the data set file. (default: ./data/data_set.csv)
-  - `--output`: Directory to save the output file. (default: ./data/)
-  - `--type`: Data augmentation type. Options: 0 (structural features-aligned SMILES enumeration) or 1 (randomized SMILES enumeration). (default: 0)
-  - `--enum_factor`: Data amplification factor. (default: 100)
-  - `--max_tries`: Maximum trying number for SMILES enumeration. (default: 500)
-#### Step 3: Run training from scratch
-Run `train.py` script for training from scratch.
-```Bash
-python train.py
-```
+👉 Please refer to the detailed training documentation: [Model Training](Model_Training.md).
+
 ## Requirements
 Annotated versions are tested, later versions should generally work.
 - Language: `Python 3.10`
