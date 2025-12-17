@@ -28,7 +28,7 @@
       - [Calculate molecular properties](#calculate-molecular-properties)
       - [Batch running](#batch-running)
   - [Local Installation (Conda)](#local-installation-conda)
-- [Model Construction (Optional)](#model-construction-optional)
+- [Model Construction](#model-construction)
 - [Requirements](#requirements)
 - [Preferred Hardware](#preferred-hardware)
 
@@ -205,7 +205,7 @@ conda install -c bioconda hmmer=3.3.2
 pip install torch==2.1.0 torchtext==0.16.0
 pip install biopython==1.79 pandas==2.0.3 rdkit==2023.03.1 numpy==1.26.0
 ```
-## Model Construction (Optional)
+## Model Construction
 
 👉 Please refer to the detailed model construction documentation: [Model Construction](model_construction.md).
 

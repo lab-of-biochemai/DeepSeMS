@@ -4,7 +4,7 @@
 ![alt text](deepsems_architecture.png)
 
 ## Table of Contents
-- [Data Preparation and Model Development](#data-preparation-and-model-development)
+- [Model Construction](#model-construction)
   - [Data Preparation](#data-preparation)
     - [Option 1: Using the processed training dataset](#option-1-using-the-processed-training-dataset)
     - [Option 2: Processing from raw data](#option-2-processing-from-raw-data)
@@ -18,7 +18,7 @@
       - [Step 2: Model Training](#step-2-model-training)
       - [Step 3: Model validation and testing](#step-3-model-validation-and-testing)
 
-## Data Preparation and Model Development
+## Model Construction
 ### Data Preparation
 #### Option 1: Using the processed training dataset
 Uses the curated, fully processed training dataset released by the authors and reproduces the model reported in the manuscript and used by the web server. 
