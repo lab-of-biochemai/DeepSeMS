@@ -83,7 +83,7 @@ Below is the list of arguments available you can pass to the `train.py` script t
 
 #### Step 3: Model Validation
 After completing the training process, you will obtain the customized model in the `./checkpoints/` folder.  
-You can validate the model by running predictions:
+You can validate the model by running predictions on test data:
 ```Bash
 python predict.py
 ```
