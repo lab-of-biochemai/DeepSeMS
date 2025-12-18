@@ -16,7 +16,7 @@
     - [Option 2: Development customized model](#option-2-development-customized-model)
       - [Step 1: Model Architecture](#step-1-model-architecture)
       - [Step 2: Model Training](#step-2-model-training)
-      - [Step 3: Model Validation](#step-3-model-validation)
+      - [Step 3: Model Evaluation](#step-3-model-evaluation)
 
 ## Model Construction
 ### Data Preparation
@@ -81,9 +81,9 @@ Below is the list of arguments available you can pass to the `train.py` script t
 | `--patience` | `int` | `10` | Early stopping patience (epochs without improvement). |
 | `--model_prefix` | `str` | `checkpoint` | Prefix for saved model files (e.g., `checkpoint0.ckpt`). |
 
-#### Step 3: Model Validation
+#### Step 3: Model Evaluation
 After completing the training process, you will obtain the customized model in the `./checkpoints/` folder.  
-You can validate the model by running predictions on test data:
+You can evaluate the model by running predictions on test data:
 ```Bash
 python predict.py
 ```
@@ -93,3 +93,11 @@ python predict.py
   - `--output`: Directory to save annotation and output result files (default: ./test/outputs/).
   - `--pfam`: Directory to pfam database files (default: ./data/pfam/).
 
+The published DeepSeMS model had been evaluated on external test datasets of 'known BGCs' with experimentally verified SMs for accuracy, and 'cryptic BGCs' without chemical structure of SMs for generalization ability (see our paper for details).  
+Evaluation results show that the DeepSeMS model greatly improved the accuracy of  structure prediction than current leading methods: 
+
+| Method | Success rate |	Structural similarity |	Scaffold similarity |	Structure recovery |	Scaffold recovery |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| antiSMASH 7	| 63.50%	| 0.14	| 0.03	| 0.00%	| 1.23% | 
+| PRISM 4	| 88.96%	| 0.45	| 0.42	| 8.90%	| 16.87% | 
+| DeepSeMS	| 97.55%	| 0.60	| 0.63	| 41.10%	| 53.68% |
