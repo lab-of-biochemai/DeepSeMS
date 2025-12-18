@@ -16,7 +16,7 @@
     - [Option 2: Development customized model](#option-2-development-customized-model)
       - [Step 1: Model Architecture](#step-1-model-architecture)
       - [Step 2: Model Training](#step-2-model-training)
-      - [Step 3: Model validation and testing](#step-3-model-validation-and-testing)
+      - [Step 3: Model Validation](#step-3-model-validation)
 
 ## Model Construction
 ### Data Preparation
@@ -81,6 +81,15 @@ Below is the list of arguments available you can pass to the `train.py` script t
 | `--patience` | `int` | `10` | Early stopping patience (epochs without improvement). |
 | `--model_prefix` | `str` | `checkpoint` | Prefix for saved model files (e.g., `checkpoint0.ckpt`). |
 
-#### Step 3: Model validation and testing
+#### Step 3: Model Validation
 After completing the training process, you will obtain the customized model in the `./checkpoints/` folder.  
-You can validate and test the model by running predictions according to [ReadMe-Running predictions](ReadMe.md#step-3-run-predictions).
+You can validate the model by running predictions:
+```Bash
+python predict.py
+```
+- Arguments:
+  - `--input`: Path to the input file.
+  - `--type`: Input format. Options: antismash (default) or deepbgc.
+  - `--output`: Directory to save annotation and output result files (default: ./test/outputs/).
+  - `--pfam`: Directory to pfam database files (default: ./data/pfam/).
+
