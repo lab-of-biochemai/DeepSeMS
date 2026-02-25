@@ -17,7 +17,7 @@ import argparse
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 smiles_vocab = torch.load('./vocabs/smiles-vocab.pt')
-bgc_features = pd.read_csv(r'./vocabs/bgc_features_vacab.csv')['bgc_features'].tolist()
+bgc_features = pd.read_csv(r'./vocabs/bgc_features_vocab.csv')['bgc_features'].tolist()
 tokenize = lambda x : x.split()
 tokenizer = RegexTokenizer()
 
