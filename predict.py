@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
     # ---------------- Load Vocabularies ----------------
     print("Loading vocabularies...")
-    bgc_features = pd.read_csv('./vocabs/bgc_features_vacab.csv')['bgc_features'].tolist()
+    bgc_features = pd.read_csv('./vocabs/bgc_features_vocab.csv')['bgc_features'].tolist()
     bgc_features_voc = get_vocab_bgc(bgc_features)
     smiles_vocab = torch.load('./vocabs/smiles-vocab.pt')
 
@@ -280,4 +280,5 @@ if __name__ == '__main__':
         # ---------------- Save Results ----------------
         res_df = pd.DataFrame(output_results)
         res_df = res_df[table_columns]
+
         res_df.to_csv(output_table, sep="\t", header=True, index=False, mode='w')
