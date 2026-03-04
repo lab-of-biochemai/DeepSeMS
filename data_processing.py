@@ -53,7 +53,7 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=str, default='./data/')
     parser.add_argument('--type', type=int, choices=[0,1], default=0, help='0: structural features-aligned SMILES enumeration, 1: randomized SMILES enumeration')
     parser.add_argument('--enum_factor', type=int, default=100)
-    parser.add_argument('--max_tries', type=int, default=500)
+    parser.add_argument('--max_tries', type=int, default=1000)
     args = parser.parse_args()
     enum_factor = args.enum_factor
     max_tries = args.max_tries
