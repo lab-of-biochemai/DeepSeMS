@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------
-# TJ Xu et al. DeepSeMS: Revealing hidden biosynthetic potential of the global ocean microbiome with a large language model
+# TJ Xu et al. DeepSeMS: a large language model reveals hidden biosynthetic potential of the global ocean microbiome.
 # ----------------------------------------------------------------
 import torch
 import numpy as np
@@ -17,7 +17,7 @@ import argparse
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 smiles_vocab = torch.load('./vocabs/smiles-vocab.pt')
-bgc_features = pd.read_csv(r'./vocabs/bgc_features_vocab.csv')['bgc_features'].tolist()
+bgc_features = pd.read_csv(r'./vocabs/bgc_features_vacab.csv')['bgc_features'].tolist()
 tokenize = lambda x : x.split()
 tokenizer = RegexTokenizer()
 
@@ -46,7 +46,7 @@ def data_process(data_path):
         smile_tensor_ = np.array([smiles_vocab[token] for token in tokenizer.tokenize(smile)]).astype(np.int64)
         bgc_feature_tensor_ = np.array([bgc_features_voc[token] for token in tokenizer_bgc_features(bgc_feature)]).astype(np.int64)
         data.append([bgc_feature_tensor_, smile_tensor_])
-    random.Random(42).shuffle(data)
+    random.shuffle(data)
     return data
 
 def generate_batch(data, batch_size, padding_token):
@@ -126,7 +126,6 @@ class Transformer(nn.Module):
             num_encoder_layers=num_encoder_layers,
             num_decoder_layers=num_decoder_layers,
             dropout=dropout_p,
-            batch_first=True
         )
         self.out = nn.Linear(dim_model, trg_tokens)
 
@@ -138,12 +137,9 @@ class Transformer(nn.Module):
         tgt_emb = self.positional_encoder(tgt_emb)
 
         # Transformer blocks - Out size = (sequence length, batch_size, dim_model)
-        transformer_out = self.transformer(
-            src_emb, tgt_emb,
-            tgt_mask=tgt_mask,
-            src_key_padding_mask=src_pad_mask,
-            tgt_key_padding_mask=tgt_pad_mask
-        )
+        transformer_out = self.transformer(src_emb.transpose(0, 1), tgt_emb.transpose(0, 1), tgt_mask=tgt_mask, src_key_padding_mask=src_pad_mask, tgt_key_padding_mask=tgt_pad_mask)
+        transformer_out = transformer_out.transpose(0, 1)
+
 
         # Output layer - Out size = (batch_size, sequence length, output_vocab_size)
         out = self.out(transformer_out)
@@ -292,7 +288,7 @@ def get_args():
     parser = argparse.ArgumentParser(description='DeepSeMS Training Script')
     
     # Training hyperparameters
-    parser.add_argument('--batch_size', type=int, default=32, help='Input batch size for training (default: 32)')
+    parser.add_argument('--batch_size', type=int, default=64, help='Input batch size for training (default: 64)')
     parser.add_argument('--epochs', type=int, default=500, help='Number of epochs to train (default: 500)')
     parser.add_argument('--lr', type=float, default=0.0001, help='Learning rate (default: 0.0001)')
     parser.add_argument('--patience', type=int, default=10, help='Early stopping patience (default: 10)')

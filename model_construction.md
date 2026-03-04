@@ -21,8 +21,8 @@
 ## Model Construction
 ### Data Preparation
 #### Option 1: Using the processed training dataset
-Uses the processed training dataset released by the authors. 
-You can download the processed training dataset from http://doi.org/10.6084/m9.figshare.29680658.   
+Uses the curated, fully processed training dataset released by the authors and reproduces the model reported in the manuscript and used by the web server. 
+You can download the processed training dataset (https://figshare.com/ndownloader/files/60134648) for reproducing the published DeepSeMS model.   
 Unzip and place the training dataset files (e.g., `tran_*.csv, val_*.csv`) into the `./data` directory.
 #### Option 2: Processing from raw data
 Intended for advanced users who wish to retrain DeepSeMS on new datasets or with customized data preprocessing and augmentation.
@@ -45,7 +45,7 @@ python data_processing.py
   - `--output`: Directory to save the output file. (default: ./data/)
   - `--type`: Data augmentation type. Options: 0 (structural features-aligned SMILES enumeration) or 1 (randomized SMILES enumeration). (default: 0)
   - `--enum_factor`: Data amplification factor. (default: 100)
-  - `--max_tries`: Maximum trying number for SMILES enumeration. (default: 1000)
+  - `--max_tries`: Maximum trying number for SMILES enumeration. (default: 500)
 
 - Illustration of the data augmentation process: 
 ![alt text](data_augmentation.png)
@@ -75,7 +75,7 @@ Below is the list of arguments available you can pass to the `train.py` script t
 
 | Argument | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `--batch_size` | `int` | `32` | Number of samples per batch. |
+| `--batch_size` | `int` | `64` | Number of samples per batch. |
 | `--epochs` | `int` | `500` | Total number of training epochs per fold. |
 | `--lr` | `float` | `0.0001` | Learning rate for the AdamW optimizer. |
 | `--patience` | `int` | `10` | Early stopping patience (epochs without improvement). |
