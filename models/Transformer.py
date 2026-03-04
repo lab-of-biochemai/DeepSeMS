@@ -32,7 +32,6 @@ class Transformer(nn.Module):
             num_encoder_layers=num_encoder_layers,
             num_decoder_layers=num_decoder_layers,
             dropout=dropout_p,
-            batch_first=True
         )
         self.out = nn.Linear(dim_model, trg_tokens)
         
@@ -44,12 +43,8 @@ class Transformer(nn.Module):
         tgt_emb = self.positional_encoder(tgt_emb)
 
         # Transformer blocks - Out size = (sequence length, batch_size, dim_model)
-        transformer_out = self.transformer(
-            src_emb, tgt_emb,
-            tgt_mask=tgt_mask,
-            src_key_padding_mask=src_pad_mask,
-            tgt_key_padding_mask=tgt_pad_mask
-        )
+        transformer_out = self.transformer(src_emb.transpose(0, 1), tgt_emb.transpose(0, 1), tgt_mask=tgt_mask, src_key_padding_mask=src_pad_mask, tgt_key_padding_mask=tgt_pad_mask)
+        transformer_out = transformer_out.transpose(0, 1)
         
         
         # Output layer - Out size = (batch_size, sequence length, output_vocab_size)
