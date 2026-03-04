@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------
-# TJ Xu et al. DeepSeMS: a large language model reveals hidden biosynthetic potential of the global ocean microbiome.
+# TJ Xu et al. DeepSeMS: Revealing hidden biosynthetic potential of the global ocean microbiome with a large language model
 # ----------------------------------------------------------------
 import numpy as np
 import pandas
@@ -23,11 +23,25 @@ def scaffold_aligned_enumeration(smiles, smiles_scaffold):
     matches=mol.GetSubstructMatches(scaffold)
     if len(matches)==0:
         return(smiles)
-    else:
+    elif len(matches)==1:
         match=list(matches[0])
         other_atom_list=[a for a in mol_atom_list if a not in match]
         random.shuffle(other_atom_list)
         new_order=match+other_atom_list
+        random_mol = Chem.RenumberAtoms(mol, newOrder=new_order)
+        new_mol_smiles=Chem.MolToSmiles(random_mol, canonical=False, isomericSmiles=False, kekuleSmiles=True)
+        return(new_mol_smiles)
+    elif len(matches)>1:
+        for match in matches:
+            match=list(match)
+            match_sort = sorted(match, reverse=True)
+            mol_rw = Chem.RWMol(mol)
+            for idx in match_sort:
+                mol_rw.RemoveAtom(idx)
+                linkers = Chem.Mol(mol_rw)
+                if len(Chem.rdmolops.GetMolFrags(linkers)) == 1:
+                    link_atom_list=[a for a in mol_atom_list if a not in match]  
+                    new_order=match+link_atom_list
         random_mol = Chem.RenumberAtoms(mol, newOrder=new_order)
         new_mol_smiles=Chem.MolToSmiles(random_mol, canonical=False, isomericSmiles=False, kekuleSmiles=True)
         return(new_mol_smiles)
@@ -62,6 +76,13 @@ if __name__ == '__main__':
                     if len(tries) > enum_factor:
                         tries = tries[:enum_factor]
                         break
+            else:
+                for try_idx in range(max_tries):
+                    this_try = Chem.MolToSmiles(m, doRandom=True, canonical=False, isomericSmiles=False, kekuleSmiles=True)
+                    tries.append(this_try)
+                    tries = [rnd for rnd in np.unique(tries)]
+                    if len(tries) > enum_factor:
+                        tries = tries[:enum_factor]
         else:
             for try_idx in range(max_tries):
                 for try_idx in range(max_tries):
