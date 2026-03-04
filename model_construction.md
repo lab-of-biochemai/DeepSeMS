@@ -45,7 +45,7 @@ python data_processing.py
   - `--output`: Directory to save the output file. (default: ./data/)
   - `--type`: Data augmentation type. Options: 0 (structural features-aligned SMILES enumeration) or 1 (randomized SMILES enumeration). (default: 0)
   - `--enum_factor`: Data amplification factor. (default: 100)
-  - `--max_tries`: Maximum trying number for SMILES enumeration. (default: 500)
+  - `--max_tries`: Maximum trying number for SMILES enumeration. (default: 1000)
 
 - Illustration of the data augmentation process: 
 ![alt text](data_augmentation.png)
