@@ -37,6 +37,8 @@ Xu, T., Yang, Y., Zhu, R. et al. DeepSeMS: revealing the hidden biosynthetic pot
 ## Web Server
 DeepSeMS provides an online web server that allows users to run the model without installing any software:
 [https://biochemai.cstspace.cn/deepsems/](https://biochemai.cstspace.cn/deepsems/)
+or 
+[https://www.biosino.org/deepsems/](https://www.biosino.org/deepsems/)
 
 ## Installation & Setup
 DeepSeMS can be run through Docker (recommended) or a local Conda environment.  
