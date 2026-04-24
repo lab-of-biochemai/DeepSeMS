@@ -33,7 +33,7 @@
 - [Preferred Hardware](#preferred-hardware)
 
 ## Publication
-DeepSeMS: a large language model reveals hidden biosynthetic potential of the global ocean microbiome. *bioRxiv* 2025.03.02.641084; doi: https://doi.org/10.1101/2025.03.02.641084
+Xu, T., Yang, Y., Zhu, R. et al. DeepSeMS: revealing the hidden biosynthetic potential of the global ocean microbiome with a large language model. <i>Nature Computational Science</i> (2026) <a href="https://doi.org/10.1038/s43588-026-00983-1" target="_blank">https://doi.org/10.1038/s43588-026-00983-1</a>
 ## Web Server
 DeepSeMS provides an online web server that allows users to run the model without installing any software:
 [https://biochemai.cstspace.cn/deepsems/](https://biochemai.cstspace.cn/deepsems/)

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------
-# TJ Xu et al. DeepSeMS: a large language model reveals hidden biosynthetic potential of the global ocean microbiome.
+# Xu, T., Yang, Y., Zhu, R. et al. DeepSeMS: revealing the hidden biosynthetic potential of the global ocean microbiome with a large language model. Nature Computational Science (2026) https://doi.org/10.1038/s43588-026-00983-1
 # ----------------------------------------------------------------
 import pandas as pd
 from rdkit import Chem

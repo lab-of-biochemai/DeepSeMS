@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------
-# TJ Xu et al. DeepSeMS: a large language model reveals hidden biosynthetic potential of the global ocean microbiome.
+# Xu, T., Yang, Y., Zhu, R. et al. DeepSeMS: revealing the hidden biosynthetic potential of the global ocean microbiome with a large language model. Nature Computational Science (2026) https://doi.org/10.1038/s43588-026-00983-1
 # ----------------------------------------------------------------
 import torch
 from Bio import SearchIO
@@ -38,7 +38,7 @@ def tokenizer_bgc_features(bgc_features):
     return tokens
 
 
-def predict(model, input_sequence, max_length=250, PAD_token=1, SOS_token=2, EOS_token=3, device='cpu'):
+def predict(model, input_sequence, max_length=250, PAD_token=1, SOS_token=2, EOS_token=3, device='cuda'):
     model.eval()
     y_input = torch.tensor([[SOS_token]], dtype=torch.long, device=device)
     length_penalty = 0.6
@@ -75,7 +75,7 @@ if __name__ == '__main__':
                         help='Input file type: "antismash" (default) or "deepbgc"')
     parser.add_argument('--output', type=str, default='./test/outputs/', help='Output directory')
     parser.add_argument('--pfam', type=str, default='./data/pfam/', help='Pfam database files directory')
-    parser.add_argument('--max', type=int, default=250, help='Max sequence length')
+    parser.add_argument('--max', type=int, default=1250, help='Max sequence length')
     parser.add_argument('--pad', type=int, default=1, help='PAD token ID')
     parser.add_argument('--sos', type=int, default=2, help='SOS token ID')
     parser.add_argument('--eos', type=int, default=3, help='EOS token ID')
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
     # ---------------- Load Vocabularies ----------------
     print("Loading vocabularies...")
-    bgc_features = pd.read_csv('./vocabs/bgc_features_vacab.csv')['bgc_features'].tolist()
+    bgc_features = pd.read_csv('./vocabs/bgc_features_vocab.csv')['bgc_features'].tolist()
     bgc_features_voc = get_vocab_bgc(bgc_features)
     smiles_vocab = torch.load('./vocabs/smiles-vocab.pt')
 
